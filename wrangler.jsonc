@@ -7,7 +7,7 @@
 // or the shell env) — it is not a runtime setting of this Worker.
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "verawall-console",
+  "name": "verawall",
   "compatibility_date": "2026-07-01",
   "assets": {
     "directory": "./dist",
