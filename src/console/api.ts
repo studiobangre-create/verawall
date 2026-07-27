@@ -247,13 +247,18 @@ export interface TenantSettings {
     dataRetention: string;
     platformVersion: string;
     sessionIngestion: number;
+    currency?: string; // primary operating currency (single-currency tenants)
   };
   notifications: Record<string, boolean>;
   modules: Record<string, boolean>;
   integrations: { name: string; detail: string; status: string; ok: boolean }[];
   // Per-currency "high amount, no spending history" cutoffs (ISO code -> value,
-  // plus a DEFAULT fallback). Absent when the collector predates the feature.
-  risk?: { highAmount: Record<string, number> };
+  // plus a DEFAULT fallback), and TXN_VELOCITY tuning. Absent when the
+  // collector predates the feature.
+  risk?: {
+    highAmount: Record<string, number>;
+    velocity?: { windowMin: number; threshold: number; baseWeight: number; slope: number };
+  };
 }
 
 export interface ApiKey {
