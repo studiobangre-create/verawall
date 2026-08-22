@@ -1,12 +1,11 @@
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../i18n/LanguageContext';
 import { useIsMobile } from '../useMediaQuery';
-import { trustPoints } from '../data/home';
-import { Icon } from './Icons';
+import { DemoRequestForm } from './DemoRequestForm';
+import { CONTACT_EMAIL } from './contact';
 
-// The footer doubles as the contact block (#contact). Requests go to the
-// address published on the whitepaper and pitch deck.
-export const CONTACT_EMAIL = 'contact@verawall.com';
+// The footer doubles as the contact block (#contact).
+export { CONTACT_EMAIL } from './contact';
 
 export function Footer() {
   const { t, lang } = useLanguage();
@@ -31,31 +30,10 @@ export function Footer() {
             <h2 style={{ fontSize: isMobile ? 34 : 58, lineHeight: 1.05, fontWeight: 800, textTransform: 'uppercase', color: '#D71A28', textWrap: 'balance' }}>
               {t('Stop the next transfer, not the last one')}
             </h2>
-            <p style={{ fontSize: 19, color: '#EAEAEA', marginTop: 28, maxWidth: 560, lineHeight: 1.65 }}>
-              {t(
-                'Thirty minutes: the demo bank, the scoring signals, the analyst console. Then a pilot on a replay of your own transaction feed — no app change needed to start.',
-              )}
-            </p>
-            <a href={`mailto:${CONTACT_EMAIL}?subject=${subject}`} className="btn-primary" style={{ marginTop: 36, padding: '17px 32px' }}>
-              {t('Request a demo')}
-            </a>
-            <div style={{ marginTop: 18, fontSize: 14, color: '#B9BDC1' }}>
-              <a href={`mailto:${CONTACT_EMAIL}`} className="footer-link" style={{ color: '#EAEAEA' }}>{CONTACT_EMAIL}</a>
-            </div>
           </div>
           <div>
-            <h4 style={{ fontSize: 22, fontWeight: 700, color: '#fff' }}>{t('Security and privacy by design')}</h4>
-            <div style={{ display: 'grid', gap: 18, marginTop: 22 }}>
-              {trustPoints.map((p) => (
-                <div key={p.title} style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
-                  <Icon name={p.icon} size={26} style={{ flexShrink: 0, marginTop: 2 }} />
-                  <div>
-                    <div style={{ fontFamily: 'Barlow', fontWeight: 700, fontSize: 15, color: '#fff' }}>{t(p.title)}</div>
-                    <div style={{ fontSize: 14, color: '#B9BDC1', marginTop: 3, lineHeight: 1.6 }}>{t(p.desc)}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <h4 style={{ fontSize: 22, fontWeight: 700, color: '#fff' }}>{t('Plan your demo')}</h4>
+            <DemoRequestForm dark />
           </div>
         </div>
 

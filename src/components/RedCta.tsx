@@ -1,8 +1,9 @@
 import { useLanguage } from '../i18n/LanguageContext';
+import { CONTACT_EMAIL } from './contact';
+import { DemoRequestForm } from './DemoRequestForm';
 
 export function RedCta() {
   const { t } = useLanguage();
-
   return (
     <section style={{ maxWidth: 'var(--page-width)', margin: '0 auto', padding: '70px 15px' }}>
       <div
@@ -23,15 +24,13 @@ export function RedCta() {
           }}
         />
         <div style={{ position: 'relative', maxWidth: 860, margin: '0 auto', padding: '92px 48px', textAlign: 'center' }}>
-          <h2 style={{ fontSize: 42, lineHeight: 1.15, fontWeight: 700, color: '#fff' }}>
+          <h2 style={{ fontSize: 42, lineHeight: 1.15, fontWeight: 700, color: '#fff', textWrap: 'balance' }}>
             {t('See it on your own traffic.')}
           </h2>
           <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.94)', marginTop: 24, lineHeight: 1.7 }}>
             {t('A 30-minute walkthrough of the demo bank, the scoring signals and the analyst console — then a pilot on a replay of your own transaction feed.')}
           </p>
-          <a href="#contact" className="btn-primary-inverse" style={{ marginTop: 34 }}>
-            {t('Request a demo')}
-          </a>
+          <DemoRequestForm />
         </div>
       </div>
     </section>
